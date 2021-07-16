@@ -5,7 +5,7 @@ fetch(`https://api.github.com/repos/gabe4278/mcChat/releases`)
 .then(res => res.json())
 .then(resJson => {
 	if (resJson[0].tag_name !== version) {
-		console.log("A new update is available.");
+		console.log("A new update is currently available.");
 		console.log(`Current version: ${version}`);
 		console.log(`New version: ${resJson.tag_name}`);
 	}
