@@ -1,4 +1,3 @@
-require("./updates") // Check for updates
 const auth = require("./auth");
 const input = require("input");
 const fs = require("fs");

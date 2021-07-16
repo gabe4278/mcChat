@@ -2,7 +2,7 @@
   "name": "mcchat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "updates.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
@@ -15,6 +15,7 @@
     "minecraft-protocol-chat-parser": "^3.0.2",
     "mineflayer": "^3.7.0",
     "mineflayer-pathfinder": "^1.6.3",
+    "node-fetch": "^2.6.1",
     "yggdrasil": "^1.6.0"
   }
 }
