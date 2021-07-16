@@ -52,8 +52,10 @@ module.exports = function(bot) {
 
 	function inp () {
 		interface.question("", data => {
+			process.stdout.moveCursor(0, -1);
+			process.stdout.clearLine();
 			if (data.startsWith(baritonePrefix)) {
-				
+				// coming soon
 			}
 			else if (data.startsWith(prefix)) {
 				let args = data.slice(prefix.length).trim().split(" ");
