@@ -11,8 +11,10 @@ Run the command `git clone https://github.com/gabe4278/mcChat`
 
 Or, click on the green "Code" button that has the download icon and click on "Download ZIP".
 
-After the repository is cloned to your disk, run `cd mcChat`
+After the repository is cloned or downloaded to your disk, run `cd mcChat`
 
-To install dependencies, `npm install`
+You'll need to install dependencies first, run `npm install`
 
-After that, `npm start`
+After it is installed, run `npm start`
+
+Enjoy!
