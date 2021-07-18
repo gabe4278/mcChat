@@ -190,11 +190,12 @@ module.exports = function(bot) {
 	bot.registerCommand("ping", "Gets you or other players' ping.", "ping [player]", args => {
 		if (!args[0]) console.log(`Your ping is ${bot.player.ping} ms`);
 		else {
-			for (let i in players) {
+			for (let i in bot.players) {
 				if (args[0].toLowerCase() == bot.players[i].username.toLowerCase()) {
-					console.log(`${bot.players[i].username}'s ping is ${bot.players[i].ping} ms`);
+					return console.log(`${bot.players[i].username}'s ping is ${bot.players[i].ping} ms`);
 				}
 			}
+			console.log("Player not found.");
 		}
 	});
 
