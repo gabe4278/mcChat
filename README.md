@@ -9,7 +9,7 @@ Open the terminal or command line of your choice.
 
 Run the command `git clone https://github.com/gabe4278/mcChat`
 
-Or, click on the green "Code" button and click on "Download as ZIP".
+Or, click on the green "Code" button that has the download icon and click on "Download ZIP".
 
 After the repository is cloned to your disk, run `cd mcChat`
 
