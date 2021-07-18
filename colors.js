@@ -11,6 +11,9 @@ module.exports = function(color) {
 		case "dark_green":
 		return colors.green;
 
+		case "dark_cyan":
+		return colors.cyan;
+
 		case "dark_aqua":
 		return colors.cyan;
 
