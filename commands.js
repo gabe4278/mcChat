@@ -199,12 +199,12 @@ module.exports = function(bot) {
 	});
 
 	bot.registerCommand("bestping", "Gets the player's best ping in this server.", "bestping", () => {
-		let bestPing = Object.entries(bot.players).sort((a, b) => a[1].ping - b[1].ping)[0];
+		let bestPing = Object.entries(bot.players).sort((a, b) => a[1].ping - b[1].ping)[1];
 		console.log(`${bestPing.username} has the best ping in this server, ${bestPing.ping} ms`);
 	});
 
 	bot.registerCommand("worstping", "Gets the player's worst ping in this server.", "worstping", () => {
-		let worstPing = Object.entries(bot.players).sort((a, b) => b[1].ping - a[1].ping)[0];
+		let worstPing = Object.entries(bot.players).sort((a, b) => b[1].ping - a[1].ping)[1];
 		console.log(`${worstPing.username} has the lowest ping in this server, ${worstPing.ping} ms`);
 	});
 
