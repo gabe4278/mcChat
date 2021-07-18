@@ -35,7 +35,15 @@ function displayServers() {
 								lastLogin.port = p;
 								lastLogin.version = serverList[i].version;
 								let bot = require("./client")(a, p, serverList[i].version);
+								var hasDisconnected = false;
+								bot.on("error", () => {
+									if (hasDisconnected) return;
+									hasDisconnected = true;
+									start();
+								});
 								bot.on("end", () => {
+									if (hasDisconnected) return;
+									hasDisconnected = true;
 									console.log("Disconnected from server.");
 									start();
 								});
@@ -164,6 +172,12 @@ function start() {
 					lastLogin.port = p;
 					lastLogin.version = version;
 					let bot = require("./client")(a, p, version);
+					var hasDisconnected = false;
+					bot.on("error", () => {
+						if (hasDisconnected) return;
+						hasDisconnected = true;
+						start();
+					});
 					bot.on("end", () => {
 						console.log("Disconnected from server.");
 						start();
