@@ -7,11 +7,11 @@ fetch(`https://api.github.com/repos/gabe4278/mcChat/releases`)
 	if (resJson[0].tag_name !== version) {
 		console.log("A new update is currently available.");
 		console.log(`Current version: ${version}`);
-		console.log(`New version: ${resJson.tag_name}`);
+		console.log(`New version: ${resJson[0].tag_name}`);
 	}
+	require("./index");
 })
 .catch(() => {
 	console.warn("Unable to check for updates.");
+	require("./index");
 });
-
-require("./index");
