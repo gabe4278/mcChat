@@ -202,7 +202,7 @@ module.exports = function(bot) {
 
 	bot.registerCommand("worstping", "Gets the player's worst ping in this server.", "worstping", () => {
 		let worstPing = Object.entries(bot.players).sort((a, b) => b[1].ping - a[1].ping)[0][1];
-		console.log(`${worstPing.username} has the lowest ping in this server, ${worstPing.ping} ms`);
+		console.log(`${worstPing.username} has the worst ping in this server, ${worstPing.ping} ms`);
 	});
 
 	bot.registerCommand("disconnect", "Disconnects to the server.", "disconnect", () => {
