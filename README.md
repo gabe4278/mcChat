@@ -3,7 +3,7 @@ A Minecraft integrated chat that you can chat in real-time.
 
 # Installation
 
-Make sure you have Node.js v14 or higher. If you don't have it installed, you can install it at [https://nodejs.org](https://nodejs.org)
+Make sure you have Node.js v14 or higher, including npm. If you don't have it installed, you can install it at [https://nodejs.org](https://nodejs.org)
 
 Open the terminal of your choice.
 
