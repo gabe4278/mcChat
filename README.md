@@ -17,4 +17,4 @@ You'll need to install dependencies first, run `npm install`
 
 After it is installed, run `npm start`
 
-Enjoy!
+That's all, you are all set. Enjoy!
