@@ -109,7 +109,7 @@ function start() {
 		fs.writeFileSync(`${__dirname}/servers.json`, "[]");
 	}
 
-	input.select("What do you want to do?", ["Add a server", "Display server list", "Direct Connection", "Connect from a local network", "Reconnect from previous session", "Exit", "Logout"]).then(sel => {
+	input.select("What do you want to do?", ["Add a server", "Display server list", "Direct Connection", "Connect from a local network", "Reconnect from previous server", "Exit", "Logout"]).then(sel => {
 		if (sel == "Add a server") {
 			input.text("Enter server name:").then(name => {
 				if (name.trim() == "") {
@@ -187,13 +187,13 @@ function start() {
 			})
 			.catch(err => console.error(`Couldn't scan for Minecraft server instances: ${err}`));
 		}
-		else if (sel == "Reconnect from previous session") {
+		else if (sel == "Reconnect from previous server") {
 			if (lastLogin.address && lastLogin.port) {
 				let bot = require("./client")(lastLogin.address, lastLogin.port, lastLogin.version);
 				bot.on("end", start);
 			}
 			else {
-				console.log("You have not yet disconnected from the previous session.");
+				console.log("You have not yet disconnected from the previous server.");
 				start();
 			}
 		}
