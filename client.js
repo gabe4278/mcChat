@@ -1,5 +1,6 @@
 const mineflayer = require("mineflayer");
 const getColor = require("./colors");
+const colors = require("colors");
 const fs = require("fs");
 
 module.exports = function (host, port, version) {
@@ -50,6 +51,8 @@ module.exports = function (host, port, version) {
 		else compress([jsonMsg]);
 		console.log(text, "Kicked message");
 	});
+
+	bot.on("error", err => console.error(colors.red(`An error has occurred: ${err}`)));
 
 	bot.once("login", () => {
 		console.log("Connected to server.");

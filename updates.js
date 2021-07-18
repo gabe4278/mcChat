@@ -1,5 +1,5 @@
 const fetch = require("node-fetch").default;
-const version = "v1.1.1"; // Don't change this
+const version = "v1.1.3"; // Don't change this
 
 fetch(`https://api.github.com/repos/gabe4278/mcChat/releases`)
 .then(res => res.json())

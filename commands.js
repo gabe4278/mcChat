@@ -77,10 +77,6 @@ module.exports = function(bot) {
 		});
 	};
 
-	bot.on("error", err => {
-		console.error(colors.red(`An error has occurred: ${err}`));
-	});
-
 	bot.on("end", () => {
 		global.console.log = cLog;
 		global.console.error = cError;

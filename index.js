@@ -116,6 +116,17 @@ function start() {
 					console.error("This field is required.");
 					return start();
 				}
+				var serverList = JSON.parse(fs.readFileSync(`${__dirname}/servers.json`));
+				for (let i in serverList) {
+					if (serverList[i].name == name) {
+						console.error("That server with that name already exists.");
+						return start();
+					}
+				}
+				if (name == "Back") {
+					console.error("Due to bugs, this name is reserved. Please choose another name.");
+					return start();
+				}
 				input.text("Enter server address:").then(address => {
 					if (address.trim() == "") {
 						console.error("This field is required.");
@@ -128,7 +139,6 @@ function start() {
 								return start();
 							}
 						}
-						var serverList = JSON.parse(fs.readFileSync(`${__dirname}/servers.json`));
 						serverList.push({name: name, address: address, version: version});
 						fs.writeFileSync(`${__dirname}/servers.json`, JSON.stringify(serverList));
 						start();
