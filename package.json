@@ -12,7 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "colors": "^1.4.0",
+    "minecraft-protocol": "^1.25.0",
     "minecraft-protocol-chat-parser": "^3.0.2",
+    "minecraft-server-util": "^3.5.2",
     "mineflayer": "^3.7.0",
     "mineflayer-pathfinder": "^1.6.3",
     "node-fetch": "^2.6.1",

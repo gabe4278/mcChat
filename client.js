@@ -10,7 +10,8 @@ module.exports = function (host, port, version) {
 		port: port,
 		version: version,
 		username: creditionals.username,
-		password: creditionals.password
+		password: creditionals.password,
+		auth: creditionals.auth
 	});
 
 	const parser = require("minecraft-protocol-chat-parser")(bot.protocolVersion);

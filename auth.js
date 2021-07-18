@@ -16,6 +16,7 @@ function requestLogin() {
 					xboxAuth.authenticate(username, password)
 					.then(res => {
 						console.log("Successfully logged in");
+						fs.writeFileSync(`${__dirname}/creditionals.json`, JSON.stringify({username: username, password: password, auth: "microsoft"}));
 						event.emit("login");
 					})
 					.catch(err => {
@@ -37,7 +38,7 @@ function requestLogin() {
 					})
 					.then(user => {
 						console.log(`Welcome, ${user.selectedProfile.name}`);
-						fs.writeFileSync(`${__dirname}/creditionals.json`, JSON.stringify({username: username, password: password}));
+						fs.writeFileSync(`${__dirname}/creditionals.json`, JSON.stringify({username: username, password: password, auth: "mojang"}));
 						event.emit("login");
 					})
 					.catch(err => {
@@ -60,18 +61,26 @@ function requestLogin() {
 
 if (!fs.existsSync(`${__dirname}/creditionals.json`)) requestLogin();
 else {
-	let user = require(`${__dirname}/creditionals.json`);
-	if (user.password) yggdrasil.auth({user: user.username, pass: user.password}).then(usr => {
-		console.log(`Welcome back, ${usr.selectedProfile.name}`);
-		event.emit("login");
-	}).catch(err => {
-		console.log("Your creditionals have been changed, log in again");
-		requestLogin();
-	});
-	else setTimeout(() => {
-		console.log(`Welcome back, ${user.username}`);
-		event.emit("login");
-	}, 500);
+	let user = JSON.parse(fs.readFileSync(`${__dirname}/creditionals.json`));
+	if (user.auth == "mojang") {
+		if (user.password) yggdrasil.auth({user: user.username, pass: user.password}).then(usr => {
+			console.log(`Welcome back, ${usr.selectedProfile.name}`);
+			event.emit("login");
+		}).catch(err => {
+			console.log("Your creditionals have been changed, log in again");
+			requestLogin();
+		});
+		else setTimeout(() => {
+			console.log(`Welcome back, ${user.username}`);
+			event.emit("login");
+		}, 500);
+	}
+	else if (user.auth == "microsoft") {
+		xboxAuth.authenticate(username, password).then(() => {
+			console.log(`Welcome back`);
+			event.emit("login");
+		});
+	}
 }
 
 event.on("requestLogin", requestLogin);
