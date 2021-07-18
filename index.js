@@ -43,6 +43,10 @@ function displayServers() {
 
 							case "Rename this server":
 								input.text("Enter server name:").then(newName => {
+									if (newName.trim() == "") {
+										console.error("This field is required.");
+										return displayServers();
+									}
 									serverList[i].name = newName;
 									fs.writeFileSync(`${__dirname}/servers.json`, JSON.stringify(serverList));
 									displayServers();
@@ -51,6 +55,10 @@ function displayServers() {
 
 							case "Change server address":
 								input.text("Enter server address:").then(newAddress => {
+									if (newAddress.trim() == "") {
+										console.error("This field is required.");
+										return displayServers();
+									}
 									serverList[i].address = newAddress;
 									fs.writeFileSync(`${__dirname}/servers.json`, JSON.stringify(serverList));
 									displayServers();
@@ -59,7 +67,7 @@ function displayServers() {
 
 							case "Change server version":
 								input.text("Enter version (Leave blank for automatic):").then(newVersion => {
-									if (newVersion.split("") !== "") {
+									if (newVersion.trim() !== "") {
 										if (!mcData(newVersion)) {
 											console.error(`Unsupported protocol version: ${newVersion}`);
 											return displayServers();
