@@ -36,8 +36,6 @@ function displayServers() {
 								lastLogin.version = serverList[i].version;
 								let bot = require("./client")(a, p, serverList[i].version);
 								bot.on("end", () => {
-									if (hasDisconnected) return;
-									hasDisconnected = true;
 									console.log("Disconnected from server.");
 									start();
 								});
